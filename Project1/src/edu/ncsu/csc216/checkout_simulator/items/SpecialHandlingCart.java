@@ -8,16 +8,27 @@ import java.awt.Color;
 import edu.ncsu.csc216.checkout_simulator.queues.CheckoutRegister;
 
 /**
+ * This class represents special handling carts
+ * 
  * @author Joey
  *
  */
 public class SpecialHandlingCart extends Cart{
-	private static Color color;
+	/** the color of the special handling cart */
+	private static Color color = Color.RED;
 
+	/**
+	 * Constructor for SpecialHandlingCart
+	 * @param arrivalTime the time the cart arrives in line
+	 * @param processTime the amount of time it takes the cart to be processed
+	 */
 	public SpecialHandlingCart(int arrivalTime, int processTime) {
 		super(arrivalTime, processTime);
 	}
 
+	/**
+	 * Puts the SpecialHandlingCart in the appropriate line (only special lines)
+	 */
 	@Override
 	public void getInLine(CheckoutRegister[] checkoutRegister) {
 		int line = Integer.MAX_VALUE;
@@ -35,6 +46,10 @@ public class SpecialHandlingCart extends Cart{
 		setRegisterIndex(line);
 	}
 
+	/**
+	 * Returns the color of the SpecialHandlingCart
+	 * @return the color of the SpecialHandlingCart
+	 */
 	@Override
 	public Color getColor() {
 		return color;

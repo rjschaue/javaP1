@@ -8,20 +8,27 @@ import java.awt.Color;
 import edu.ncsu.csc216.checkout_simulator.queues.CheckoutRegister;
 
 /**
+ * This class represents express carts
+ *
  * @author Joey
  *
  */
 public class ExpressCart extends Cart{
-	private static Color color;
+	/** the color of the express cart */
+	private static Color color = Color.GREEN;
 
 	/**
-	 * @param arrivalTime
-	 * @param processTime
+	 * Constructor for ExpressCart
+	 * @param arrivalTime the time the cart arrives in line
+	 * @param processTime the amount of time it takes the cart to be processed
 	 */
 	public ExpressCart(int arrivalTime, int processTime) {
 		super(arrivalTime, processTime);
 	}
 
+	/**
+	 * Puts the ExpressCart in the appropriate line (any line is valid)
+	 */
 	@Override
 	public void getInLine(CheckoutRegister[] checkoutRegister) {
 		int line = Integer.MAX_VALUE;
@@ -33,6 +40,10 @@ public class ExpressCart extends Cart{
 		setRegisterIndex(line);
 	}
 
+	/**
+	 * Returns the color of the ExpressCart
+	 * @return the color of the ExpressCart
+	 */
 	@Override
 	public Color getColor() {
 		return color;
