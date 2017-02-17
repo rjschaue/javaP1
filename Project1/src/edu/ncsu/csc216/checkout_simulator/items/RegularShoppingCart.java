@@ -10,7 +10,7 @@ import edu.ncsu.csc216.checkout_simulator.queues.CheckoutRegister;
 /**
  * This class represents regular shopping carts
  * 
- * @author Joey
+ * @author Joey Schauer
  *
  */
 public class RegularShoppingCart extends Cart{

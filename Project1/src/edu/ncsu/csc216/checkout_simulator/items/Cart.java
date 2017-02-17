@@ -10,7 +10,7 @@ import edu.ncsu.csc216.checkout_simulator.queues.CheckoutRegister;
 /**
  * This abstract class provides functionality for all types of carts
  * 
- * @author Joey
+ * @author Joey Schauer
  *
  */
 public abstract class Cart {
