@@ -21,7 +21,6 @@ public class SpecialHandlingCart extends Cart{
 	@Override
 	public void getInLine(CheckoutRegister[] checkoutRegister) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

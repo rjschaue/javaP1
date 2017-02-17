@@ -23,16 +23,22 @@ public class Log {
 	}
 	
 	public void logCart(Cart cart) {
-		// TODO Auto-generated method stub
+		totalWaitTime += cart.getWaitTime();
+		totalProcessTime += cart.getProcessTime();
+		numCompleted++;
 	}
 	
 	public double averageWaitTime() {
-		// TODO Auto-generated method stub
-		return 0.0;
+		if (numCompleted > 0) {
+			return totalWaitTime / numCompleted;
+		}
+		return 0;
 	}
 	
 	public double averageProcessTime() {
-		// TODO Auto-generated method stub
-		return 0.0;
+		if (numCompleted > 0) {
+			return totalProcessTime / numCompleted;
+		}
+		return 0;
 	}
 }

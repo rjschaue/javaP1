@@ -12,6 +12,8 @@ import edu.ncsu.csc216.checkout_simulator.simulation.Log;
  */
 public class CheckoutRegister implements LineOfItems{
 	private int timeWhenAvailable;
+	private Log log;
+	private ShoppingCartQueue line;
 	
 	public CheckoutRegister(Log log) {
 		// TODO Auto-generated method stub
