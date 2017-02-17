@@ -20,7 +20,13 @@ public class RegularShoppingCart extends Cart{
 
 	@Override
 	public void getInLine(CheckoutRegister[] checkoutRegister) {
-		// TODO Auto-generated method stub
+		int line = Integer.MAX_VALUE;
+		for (int i = 1; i < checkoutRegister.length; i++) {
+			if (checkoutRegister[i].size() < line) {
+				line = i;
+			}
+		}
+		setRegisterIndex(line);
 		
 	}
 

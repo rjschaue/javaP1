@@ -20,7 +20,19 @@ public class SpecialHandlingCart extends Cart{
 
 	@Override
 	public void getInLine(CheckoutRegister[] checkoutRegister) {
-		// TODO Auto-generated method stub
+		int line = Integer.MAX_VALUE;
+		int specialStart = 0;
+		if (checkoutRegister.length / 4 == 0) {
+			specialStart = checkoutRegister.length - (checkoutRegister.length / 4);
+		} else {
+			specialStart = (checkoutRegister.length - (checkoutRegister.length / 4)) - 1;
+		}
+		for (int i = specialStart; i < checkoutRegister.length; i++) {
+			if (checkoutRegister[i].size() < line) {
+				line = i;
+			}
+		}
+		setRegisterIndex(line);
 	}
 
 	@Override
