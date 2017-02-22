@@ -44,6 +44,7 @@ public class CheckoutRegister implements LineOfItems{
 	 */
 	@Override
 	public Cart processNext() {
+		log.logCart(line.front());
 		return line.remove();
 	}
 	
@@ -53,10 +54,7 @@ public class CheckoutRegister implements LineOfItems{
 	 */
 	@Override
 	public boolean hasNext() {
-		if (line.front() == null) {
-			return false;
-		}
-		return true;
+		return !line.isEmpty();
 	}	
 
 	/**
@@ -65,8 +63,11 @@ public class CheckoutRegister implements LineOfItems{
 	 */
 	@Override
 	public int departTimeNext() {
-		// TODO Auto-generated method stub
-		return 0;
+		if(hasNext()) {
+			Cart cart = line.front();
+			return (cart.getArrivalTime() + cart.getWaitTime() + cart.getProcessTime());
+		}
+		return Integer.MAX_VALUE;
 	}
 
 	/**
@@ -75,5 +76,11 @@ public class CheckoutRegister implements LineOfItems{
 	 */
 	public void addCartToLine(Cart cart) {
 		line.add(cart);
+		if (line.isEmpty()) {
+			cart.setWaitTime(0);
+		} else {
+			cart.setWaitTime(timeWhenAvailable);			
+		}
+		timeWhenAvailable += cart.getProcessTime();
 	}
 }

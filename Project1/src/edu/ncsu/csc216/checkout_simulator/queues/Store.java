@@ -4,6 +4,7 @@
 package edu.ncsu.csc216.checkout_simulator.queues;
 
 import edu.ncsu.csc216.checkout_simulator.items.Cart;
+import edu.ncsu.csc216.checkout_simulator.items.CartFactory;
 
 /**
  * @author Joey
@@ -13,31 +14,34 @@ public class Store implements LineOfItems {
 	private ShoppingCartQueue shopping;
 	private CheckoutRegister[] register;
 	
-	public Store(int numCarts, CheckoutRegister[] checkoutRegister) {
-		// TODO Auto-generated method stub
+	public Store(int numCarts, CheckoutRegister[] register) {
+		for (int i = 1; i <= numCarts; i++) {
+			shopping.add(CartFactory.createCart());
+		}
+		this.register = register;
 	}
 	
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return shopping.size();
 	}
 	
 	@Override
 	public boolean hasNext() {
-		// TODO Auto-generated method stub
-		return false;
+		return !shopping.isEmpty();
 	}
 
 	@Override
 	public Cart processNext() {
-		// TODO Auto-generated method stub
-		return null;
+		shopping.front().getInLine(register);
+		return shopping.remove();
 	}
 
 	@Override
-	public int departTimeNext() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int departTimeNext() {		
+		if(hasNext()) {
+			return shopping.front().getArrivalTime();
+		}
+		return Integer.MAX_VALUE;
 	}
 }

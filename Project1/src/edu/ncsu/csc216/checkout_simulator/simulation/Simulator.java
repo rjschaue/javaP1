@@ -7,6 +7,7 @@ import java.awt.Color;
 
 import edu.ncsu.csc216.checkout_simulator.items.Cart;
 import edu.ncsu.csc216.checkout_simulator.queues.CheckoutRegister;
+import edu.ncsu.csc216.checkout_simulator.queues.LineOfItems;
 import edu.ncsu.csc216.checkout_simulator.queues.Store;
 
 /**
@@ -27,11 +28,11 @@ public class Simulator {
 	
 	public Simulator(int numCarts, int numRegisters) {
 		if (numRegisters < MIN_NUM_REGISTERS || numRegisters > MAX_NUM_REGISTERS || numCarts < 1) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Number of registers must be between 3 and 12 inclusive.");
 		}
 		this.numCarts = numCarts;
 		this.numRegisters = numRegisters;
-		register = new CheckoutRegister[7];
+		register = new CheckoutRegister[numRegisters];
 		theStore = new Store(numCarts, register);
 		theCalendar = new EventCalendar(register, theStore);
 		myLog = new Log();
@@ -39,6 +40,9 @@ public class Simulator {
 	
 	public static Color[] simulationColors() {
 		Color[] colors = new Color[3];
+		colors[0] = Color.GREEN;
+		colors[1] = Color.BLUE;
+		colors[2] = Color.RED;
 		return colors;
 	}
 	
@@ -51,7 +55,10 @@ public class Simulator {
 	}
 	
 	public void step() {
-		// TODO Auto-generated method stub
+		currentCart = null;
+		LineOfItems next = theCalendar.nextToBeProcessed();
+		currentCart = next.processNext();
+		stepsTaken++;
 	}
 	
 	public int getStepsTaken() {
@@ -59,12 +66,13 @@ public class Simulator {
 	}
 	
 	public int totalNumberOfSteps() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (numCarts * 2);
 	}
 	
 	public boolean moreSteps() {
-		// TODO Auto-generated method stub
+		if (stepsTaken < totalNumberOfSteps()) {
+			return true;
+		}
 		return false;
 	}
 	
@@ -83,8 +91,7 @@ public class Simulator {
 	}
 	
 	public boolean itemLeftSimulation() {
-		// TODO Auto-generated method stub
-		return false;
+		return !currentCart.isWaitingInRegisterLine();
 	}
 	
 	public double averageWaitTime() {
