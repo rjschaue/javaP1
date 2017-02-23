@@ -31,15 +31,17 @@ public class SpecialHandlingCart extends Cart{
 	 */
 	@Override
 	public void getInLine(CheckoutRegister[] checkoutRegister) {
-		int line = Integer.MAX_VALUE;
+		int line = 0;
 		int specialStart = 0;
-		if (checkoutRegister.length / 4 == 0) {
+		int registerSize = Integer.MAX_VALUE;
+		if (checkoutRegister.length % 4 == 0) {
 			specialStart = checkoutRegister.length - (checkoutRegister.length / 4);
 		} else {
 			specialStart = (checkoutRegister.length - (checkoutRegister.length / 4)) - 1;
 		}
 		for (int i = specialStart; i < checkoutRegister.length; i++) {
-			if (checkoutRegister[i].size() < line) {
+			if (checkoutRegister[i].size() < registerSize) {
+				registerSize = checkoutRegister[i].size();
 				line = i;
 			}
 		}

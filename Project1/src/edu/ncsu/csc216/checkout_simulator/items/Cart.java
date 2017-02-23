@@ -39,6 +39,9 @@ public abstract class Cart {
 		}
 		this.arrivalTime = arrivalTime;
 		this.processTime = processTime;
+		registerIndex = INITIAL_REGISTER_IDX;
+		waitTime = 0;
+		waitingProcessing = false;
 	}
 	
 	/**
@@ -102,6 +105,7 @@ public abstract class Cart {
 	 */
 	protected void setRegisterIndex(int registerIndex) {
 		this.registerIndex = registerIndex;
+		waitingProcessing = true;
 	}
 	
 	/**

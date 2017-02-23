@@ -31,9 +31,11 @@ public class ExpressCart extends Cart{
 	 */
 	@Override
 	public void getInLine(CheckoutRegister[] checkoutRegister) {
-		int line = Integer.MAX_VALUE;
+		int line = 0;
+		int registerSize = Integer.MAX_VALUE;
 		for (int i = 0; i < checkoutRegister.length; i++) {
-			if (checkoutRegister[i].size() < line) {
+			if (checkoutRegister[i].size() < registerSize) {
+				registerSize = checkoutRegister[i].size();
 				line = i;
 			}
 		}
