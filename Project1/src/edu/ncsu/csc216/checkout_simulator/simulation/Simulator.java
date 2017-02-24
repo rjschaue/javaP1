@@ -1,6 +1,3 @@
-/**
- * 
- */
 package edu.ncsu.csc216.checkout_simulator.simulation;
 
 import java.awt.Color;
@@ -99,6 +96,9 @@ public class Simulator {
 	}
 	
 	public boolean itemLeftSimulation() {
+		if (currentCart == null) {
+			return false;
+		}
 		return !currentCart.isWaitingInRegisterLine();
 	}
 	
