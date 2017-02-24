@@ -46,6 +46,7 @@ public class CheckoutRegister implements LineOfItems{
 	@Override
 	public Cart processNext() {
 		log.logCart(line.front());
+		line.front().removeFromWaitingLine();
 		return line.remove();
 	}
 	
@@ -85,6 +86,5 @@ public class CheckoutRegister implements LineOfItems{
 			timeWhenAvailable += cart.getProcessTime();
 		}
 		line.add(cart);
-		
 	}
 }

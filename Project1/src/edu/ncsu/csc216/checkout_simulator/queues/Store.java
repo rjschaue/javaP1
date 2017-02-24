@@ -35,6 +35,7 @@ public class Store implements LineOfItems {
 	@Override
 	public Cart processNext() {
 		shopping.front().getInLine(register);
+		register[shopping.front().getRegisterIndex()].addCartToLine(shopping.front());
 		return shopping.remove();
 	}
 

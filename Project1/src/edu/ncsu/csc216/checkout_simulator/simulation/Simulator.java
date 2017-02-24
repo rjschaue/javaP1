@@ -26,16 +26,19 @@ public class Simulator {
 	private CheckoutRegister[] register;
 	private Cart currentCart;
 	
-	public Simulator(int numCarts, int numRegisters) {
+	public Simulator(int numRegisters, int numCarts) {
 		if (numRegisters < MIN_NUM_REGISTERS || numRegisters > MAX_NUM_REGISTERS || numCarts < 1) {
 			throw new IllegalArgumentException("Number of registers must be between 3 and 12 inclusive.");
 		}
 		this.numCarts = numCarts;
 		this.numRegisters = numRegisters;
-		register = new CheckoutRegister[numRegisters];
+		register = new CheckoutRegister[this.numRegisters];
+		myLog = new Log();
+		for (int i = 0; i < register.length; i++) {
+			register[i]= new CheckoutRegister(myLog);
+		}
 		theStore = new Store(numCarts, register);
 		theCalendar = new EventCalendar(register, theStore);
-		myLog = new Log();
 	}
 	
 	public static Color[] simulationColors() {
@@ -56,7 +59,12 @@ public class Simulator {
 	
 	public void step() {
 		currentCart = null;
-		LineOfItems next = theCalendar.nextToBeProcessed();
+		LineOfItems next;
+		try {
+			next = theCalendar.nextToBeProcessed();
+		} catch (IllegalStateException e) {
+			throw new IllegalStateException();
+		}		
 		currentCart = next.processNext();
 		stepsTaken++;
 	}
@@ -66,7 +74,7 @@ public class Simulator {
 	}
 	
 	public int totalNumberOfSteps() {
-		return (numCarts * 2);
+		return numCarts * 2;
 	}
 	
 	public boolean moreSteps() {
