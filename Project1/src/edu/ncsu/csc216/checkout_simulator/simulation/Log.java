@@ -19,7 +19,7 @@ public class Log {
 	 * The default constructor for Log
 	 */
 	public Log() {
-		
+		//Default constructor for Log
 	}
 	
 	/**
