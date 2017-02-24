@@ -13,7 +13,7 @@ import edu.ncsu.csc216.checkout_simulator.queues.CheckoutRegister;
  * @author Joey Schauer
  *
  */
-public class RegularShoppingCart extends Cart{
+public class RegularShoppingCart extends Cart {
 	/** the color of the regular shopping cart */
 	private static Color color = Color.BLUE;
 

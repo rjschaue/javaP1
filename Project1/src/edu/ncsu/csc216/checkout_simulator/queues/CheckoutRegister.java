@@ -12,7 +12,7 @@ import edu.ncsu.csc216.checkout_simulator.simulation.Log;
  * @author Joey Schauer
  *
  */
-public class CheckoutRegister implements LineOfItems{
+public class CheckoutRegister implements LineOfItems {
 	/** the time when the checkout register is available */
 	private int timeWhenAvailable;
 	/** a log to get the results of processing carts through the register */

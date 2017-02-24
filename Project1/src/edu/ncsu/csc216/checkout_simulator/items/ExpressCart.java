@@ -13,7 +13,7 @@ import edu.ncsu.csc216.checkout_simulator.queues.CheckoutRegister;
  * @author Joey Schauer
  *
  */
-public class ExpressCart extends Cart{
+public class ExpressCart extends Cart {
 	/** the color of the express cart */
 	private static Color color = Color.GREEN;
 

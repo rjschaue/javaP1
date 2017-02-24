@@ -13,7 +13,7 @@ import edu.ncsu.csc216.checkout_simulator.queues.CheckoutRegister;
  * @author Joey Schauer
  *
  */
-public class SpecialHandlingCart extends Cart{
+public class SpecialHandlingCart extends Cart {
 	/** the color of the special handling cart */
 	private static Color color = Color.RED;
 
