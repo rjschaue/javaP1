@@ -27,6 +27,7 @@ public class CheckoutRegister implements LineOfItems{
 	public CheckoutRegister(Log log) {
 		this.log = log;
 		line = new ShoppingCartQueue();
+		timeWhenAvailable = 0;
 	}
 	
 	/**
@@ -65,7 +66,8 @@ public class CheckoutRegister implements LineOfItems{
 	public int departTimeNext() {
 		if(hasNext()) {
 			Cart cart = line.front();
-			return (cart.getArrivalTime() + cart.getWaitTime() + cart.getProcessTime());
+			int departTime = cart.getArrivalTime() + cart.getWaitTime() + cart.getProcessTime();
+			return departTime;
 		}
 		return Integer.MAX_VALUE;
 	}
@@ -75,12 +77,14 @@ public class CheckoutRegister implements LineOfItems{
 	 * @param cart the cart to be added
 	 */
 	public void addCartToLine(Cart cart) {
-		line.add(cart);
 		if (line.isEmpty()) {
 			cart.setWaitTime(0);
+			timeWhenAvailable += cart.getArrivalTime() + cart.getProcessTime();
 		} else {
-			cart.setWaitTime(timeWhenAvailable);			
+			cart.setWaitTime(timeWhenAvailable - cart.getArrivalTime());	
+			timeWhenAvailable += cart.getProcessTime();
 		}
-		timeWhenAvailable += cart.getProcessTime();
+		line.add(cart);
+		
 	}
 }

@@ -15,6 +15,7 @@ public class Store implements LineOfItems {
 	private CheckoutRegister[] register;
 	
 	public Store(int numCarts, CheckoutRegister[] register) {
+		shopping = new ShoppingCartQueue();
 		for (int i = 1; i <= numCarts; i++) {
 			shopping.add(CartFactory.createCart());
 		}
