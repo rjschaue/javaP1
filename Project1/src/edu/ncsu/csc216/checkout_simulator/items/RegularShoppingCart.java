@@ -31,7 +31,7 @@ public class RegularShoppingCart extends Cart {
 	 */
 	@Override
 	public void getInLine(CheckoutRegister[] checkoutRegister) {
-		int line = 0;
+		int line = 1;
 		int registerSize = Integer.MAX_VALUE;
 		for (int i = 1; i < checkoutRegister.length; i++) {
 			if (checkoutRegister[i].size() < registerSize) {

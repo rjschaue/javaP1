@@ -31,7 +31,7 @@ public class SpecialHandlingCart extends Cart {
 	 */
 	@Override
 	public void getInLine(CheckoutRegister[] checkoutRegister) {
-		int line = 0;
+		int line;
 		int specialStart = 0;
 		int registerSize = Integer.MAX_VALUE;
 		if (checkoutRegister.length % 4 == 0) {
@@ -39,6 +39,7 @@ public class SpecialHandlingCart extends Cart {
 		} else {
 			specialStart = (checkoutRegister.length - (checkoutRegister.length / 4)) - 1;
 		}
+		line = specialStart;
 		for (int i = specialStart; i < checkoutRegister.length; i++) {
 			if (checkoutRegister[i].size() < registerSize) {
 				registerSize = checkoutRegister[i].size();
