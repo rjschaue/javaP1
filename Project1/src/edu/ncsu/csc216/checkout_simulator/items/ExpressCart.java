@@ -40,6 +40,7 @@ public class ExpressCart extends Cart {
 			}
 		}
 		setRegisterIndex(line);
+		checkoutRegister[line].addCartToLine(this);
 	}
 
 	/**

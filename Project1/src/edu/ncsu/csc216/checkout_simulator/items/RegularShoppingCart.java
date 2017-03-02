@@ -40,7 +40,7 @@ public class RegularShoppingCart extends Cart {
 			}
 		}
 		setRegisterIndex(line);
-		
+		checkoutRegister[line].addCartToLine(this);
 	}
 
 	/**

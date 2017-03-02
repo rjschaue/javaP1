@@ -47,6 +47,7 @@ public class SpecialHandlingCart extends Cart {
 			}
 		}
 		setRegisterIndex(line);
+		checkoutRegister[line].addCartToLine(this);
 	}
 
 	/**
