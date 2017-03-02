@@ -37,7 +37,7 @@ public class SimulatorTest {
 			simulator = new Simulator(6, 0);
 			fail("Should not reach this step.");
 		} catch (IllegalArgumentException e) {
-			assertEquals(e.getMessage(), "Number of registers must be between 3 and 12 inclusive.");
+			assertEquals(e.getMessage(), "There must be at least one shopping cart in the simulation.");
 		}
 		
 		simulator = new Simulator(3, 100);
