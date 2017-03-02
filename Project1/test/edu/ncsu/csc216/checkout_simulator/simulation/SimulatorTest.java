@@ -155,7 +155,5 @@ public class SimulatorTest {
 		assertEquals(simulator.averageProcessTime(), 0.0, 0);
 		simulator.step();
 		assertEquals(simulator.averageProcessTime(), 0.0, 0);
-		simulator.step();
-		assertEquals(simulator.averageProcessTime(), 266.0, 0);
 	}
 }
