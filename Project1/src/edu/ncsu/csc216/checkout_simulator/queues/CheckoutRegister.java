@@ -45,9 +45,10 @@ public class CheckoutRegister implements LineOfItems {
 	 */
 	@Override
 	public Cart processNext() {
-		log.logCart(line.front());
-		line.front().removeFromWaitingLine();
-		return line.remove();
+		Cart processedCart = line.remove();
+		log.logCart(processedCart);
+		processedCart.removeFromWaitingLine();
+		return processedCart;
 	}
 	
 	/**
