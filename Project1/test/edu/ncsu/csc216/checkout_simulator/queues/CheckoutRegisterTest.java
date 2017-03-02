@@ -82,7 +82,6 @@ public class CheckoutRegisterTest {
 		register.addCartToLine(cart2);
 		register.processNext();
 		
-		System.out.println(register.departTimeNext());
 		assertEquals(register.departTimeNext(), 500);
 	}
 	
